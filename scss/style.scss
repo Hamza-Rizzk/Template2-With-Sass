@@ -1,0 +1,298 @@
+@import "./helpers/variables";
+@import "./helpers/_mixins";
+@import "./helpers/extends";
+
+.container {
+  width: 85%;
+  margin: auto;
+}
+
+* {
+  @include prefixer(box-sizing, border-box, webkit moz);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Start Header */
+header {
+  background-color: $secondaryColor;
+  padding: 10px 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  .logo {
+    @extend .w_f;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    h2 {
+      color: #c9c5bd;
+      // padding: 10px 0;
+      @include prefixer(transition, all 0.3s ease-in-out, webkit moz o);
+
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+
+  ul {
+    @extend .w_f;
+    display: flex;
+    list-style: none;
+    // padding: 10px 0;
+
+    li {
+      padding: 10px 15px;
+
+      a {
+        color: #c9c5bd;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        @include prefixer(transition, all 0.3s ease-in-out, webkit moz o);
+
+        &:hover {
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}
+/* End Header */
+
+/* Start Home */
+.home {
+  background-image: $homeBg;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .home-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h2 {
+      @extend .h2;
+    }
+
+    span {
+      @extend .span;
+    }
+
+    p {
+      @extend .p;
+    }
+
+    button {
+      @extend .button;
+    }
+  }
+}
+/* End Home */
+
+/* Start Need */
+.need {
+  background-color: $primaryColor;
+  text-align: center;
+  padding: 6rem 0;
+
+  .need-content {
+    h2 {
+      @extend .h2;
+      font-size: 1.5rem;
+      font-weight: normal;
+      text-transform: capitalize;
+    }
+
+    span {
+      @extend .span;
+      background-color: #fff;
+      border-radius: 15px;
+    }
+
+    p {
+      @extend .p;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    button {
+      @extend .button;
+      background-color: #fff;
+      color: $secondaryColor;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: $secondaryColor;
+        color: #fff;
+      }
+    }
+  }
+}
+/* End Need */
+
+/* Start Services */
+.service {
+  padding: 5rem 0;
+  background-color: #fff;
+  text-align: center;
+
+  h2 {
+    @extend .h2;
+    color: $secondaryColor;
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  span {
+    @extend .span;
+  }
+
+  .service-parent {
+    display: grid;
+    grid-template-columns: repeat(4, 4fr);
+    gap: 15px; // grid-gap == gap ==> grid-gap is old way
+    margin: 2.5rem 0;
+    @import "./helpers/_loops.scss";
+
+    .item {
+      h3 {
+        margin: 1rem 0;
+        color: #666562;
+      }
+
+      p {
+        color: #a4a4a4;
+        letter-spacing: 1.5px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+/* End Services */
+
+/* Start Images */
+.images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 0; /* Parent has Defualt font-size thats makes white space || gap Between the two rows ==> we Rest it to 0 */
+
+  > div {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 350px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(
+        lighten($primaryColor, 5),
+        0.5
+      ); // === background: rgba(($primaryColor, 5), 0.5);
+      opacity: 0;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+        @include prefixer(transition, all 0.5s ease-in-out, webkit moz o);
+        cursor: pointer;
+      }
+    }
+  }
+}
+/* End Images */
+
+/* Start Download */
+.download {
+  text-align: center;
+  background-color: $secondaryColor;
+  padding: 5rem 0;
+
+  h2 {
+    @extend .h2;
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  button {
+    @extend .button-s;
+    margin: 1rem 0;
+    outline: none;
+  }
+}
+/* End Download */
+
+/* Start Contact */
+.get-touch {
+  text-align: center;
+  padding: 5rem 0;
+
+  h2 {
+    @extend .h2;
+    font-size: 2.5rem;
+    font-weight: normal;
+    color: #191b1d;
+    text-transform: capitalize;
+  }
+
+  > span {
+    @extend .span;
+  }
+
+  .touch {
+    display: flex;
+    justify-content: center;
+
+    .touch-item {
+      margin: 2rem 5rem;
+
+      i {
+        display: block;
+      }
+
+      span {
+        display: inline-block;
+        margin: 1rem 0;
+      }
+
+      &:last-child {
+        span {
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}
+/* End Contact */
+@import "../scss/helpers/_mediaQuery";

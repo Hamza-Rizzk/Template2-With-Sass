@@ -1,0 +1,62 @@
+.w_f {
+  width: 50%;
+  float: left;
+}
+
+.h2 {
+  font-size: 3rem;
+  color: #FFF;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.p {
+  margin: 1.5rem 0;
+  color: #c9c5bd;
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+}
+
+.span {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: $primaryColor;
+  margin: 1rem auto;
+}
+
+.button {
+  background-color: $primaryColor;
+  color: #FFF;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FFF;
+    color: $primaryColor;
+    @include prefixer (transition, all .5s ease-in-out, webkit moz o);
+  }
+}
+
+.button-s {
+  background-color: #FFF;
+  color: $secondaryColor;
+  text-transform: uppercase;
+  width: 150px;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $secondaryColor;
+    color: #FFF;
+    border: 1px solid #FFF;
+    @include prefixer (transition, all .5s ease-in-out, webkit moz o);
+  }
+}
